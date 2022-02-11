@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cardcontainer {
+  background-color: white;
+  height: 70vh;
+  width: 50vw;
+  padding: 30px;
+  margin: 20px;
+}
+.login-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
+.loginText {
+  font-weight: bold;
+  font-size: 50px;
+}
+.button {
+  background-color: #25e925;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  height: 45px;
+  width: 100%;
+  border-radius: 20px;
+  border-width: 0px;
+  border-style: solid;
+}
+.bg-container {
+  background-image: url(https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg);
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.loginCard {
+  background-color: white;
+  height: 70vh;
+  width: 50vw;
+}
+.rememText {
+  padding-left: 6px;
+  font-size: 14px;
+}
+.forgetText {
+  padding-left: 6px;
+  font-size: 15px;
+  color: green;
+  font-weight: bold;
+}
+.remember-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.rememberdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.headtext {
+  font-size: 20px;
+  font-weight: bold;
+}
