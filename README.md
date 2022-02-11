@@ -1,1 +1,1 @@
-# fresherTraining
+# fresher learning project
