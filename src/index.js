@@ -6,6 +6,7 @@ import { createStore, } from "redux";
 import { applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import reducers from "./reducer";
+import App from './App';
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
@@ -16,7 +17,7 @@ const rootEl = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
     <div style={{ padding: 15 }}>
-      <Loginpage />
+      <App />
     </div>
   </Provider>,
   rootEl

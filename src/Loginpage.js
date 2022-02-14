@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {Link } from 'react-router-dom';
+import {Link,useNavigate } from 'react-router-dom';
 import './App.css';
 import { Button,Form,FormGroup,Label,Col,Input, } from 'reactstrap';
 import { Field, reduxForm } from "redux-form";
 import renderField from  './common/RanderField';
 import {LoginUserSuccess} from './actions/LoginAction'
-import { connect,useDispatch,useSelector } from 'react-redux';
+import {useDispatch,useSelector } from 'react-redux';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 const email = value =>
@@ -13,26 +13,39 @@ const email = value =>
     ? 'Invalid email address'
     : undefined
 export const validPassword = value =>
-value && !/^(0|[1-9][0-9]{4})$/i.test(value)
+value && /^(0|[1-9][0-9]{10})$/i.test(value)
   ? 'Invalid password, must be Numericals & 5 digits'
   : undefined
 
+  // email: info@villars-luxury.com 
+  // password : reset@123
 const Loginpage = (props) => {
   const [username,setName] = useState("");
   const [password,setPassword] = useState("");
-const { handleSubmit, pristine, reset, submitting } = props;
-
-const dispatch = useDispatch()
-
-const onSubmit = (formProps) => {
+  const { handleSubmit, pristine, reset, submitting } = props;
+  
+  const dispatch = useDispatch()  //the fundamental method of updating a Redux store's state 
+                                //use it to dispatch actions as needed.
+  const navigate = useNavigate();
+ const onSubmit = (formProps) => {
   //  console.log(formProps);
-  dispatch(LoginUserSuccess(formProps))
-}
+ 
+ dispatch(LoginUserSuccess(formProps))    // directly goes to action/LoginAction.js
+ } 
 
-const loginData = useSelector((state) => state.login.loginData)
-console.log(loginData);
-return (
-<div className = "bg-container">
+ const loginData =  useSelector((state) => state.login.loginData)
+ console.log(loginData)
+ 
+ useEffect( () => {
+   if (loginData){
+     if (loginData.isSuccess){
+     navigate(`/home`)
+   }
+ }},[loginData])
+
+
+ return (
+ <div className = "bg-container">
   <div className = "cardcontainer">
     <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="loginText text-center">LOGIN</h1>
@@ -61,7 +74,8 @@ return (
           <a href ="https://account.live.com/password/reset">FORGET PASSWORD?</a>
       </div>
       <div className="rememberdiv">
-        <Button  blocktype="button" size="lg" color="success" type="submit" disabled={pristine || submitting}>
+        
+      <Button blocktype="button" size="lg" color="success" type="submit" disabled={pristine || submitting}>
           Submit
         </Button>
         < Button blocktype="button" size="lg" disabled={pristine || submitting} onClick={reset}>
@@ -70,7 +84,7 @@ return (
       </div>
     </form>
   </div>
-</div>
+ </div>
   );
 };
 

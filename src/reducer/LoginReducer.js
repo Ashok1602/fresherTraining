@@ -4,14 +4,24 @@ const INIT_STATE = {
     password: "",
 }
 
-export default function reducer(state = INIT_STATE, action) {
+export default function reducer(state = INIT_STATE,action) {
     const {type, payload} = action;
-    switch(type){
-        case AUTH_CONST.LOGIN_SUCCESS:
-            return {
-                ...state,
-                loginData: payload,
-              };
+    switch (type) {
+      case AUTH_CONST.LOGIN_REQUEST:
+        return {
+          ...state,
+          loginData: null,
+        }
+      case AUTH_CONST.LOGIN_SUCCESS:
+        return {
+          ...state,
+          loginData: action.payload.response.data,
+        }
+      case AUTH_CONST.LOGIN_FAILURE:
+        return {
+          ...state,
+          loginData: null,
+        }
         default:
             return state
     }

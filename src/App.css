@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: start;
 }
 
 .App-logo {
@@ -42,6 +42,10 @@
   width: 50vw;
   padding: 10px;
   margin: 20px;
+  border-style: solid;
+  border-radius: 30px;
+  border-width: 0px;
+  background-image: linear-gradient(rgb(0, 15, 153), rgb(255, 255, 255));
 }
 .login-form {
   width: 100%;
