@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-import showResults from "./showResults";
 import Loginpage from "./Loginpage";
- 
+import { createStore, } from "redux";
+import { applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import reducers from "./reducer";
+
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
+
+const store = (createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
 const rootEl = document.getElementById("root");
 
 ReactDOM.render(
   <Provider store={store}>
     <div style={{ padding: 15 }}>
-      <Loginpage onSubmit={showResults} />
+      <Loginpage />
     </div>
   </Provider>,
   rootEl

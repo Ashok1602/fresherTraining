@@ -1,9 +1,18 @@
-import {password,email} from '../Loginpage'
+import { AUTH_CONST } from "../actions/actionTypes";
+const INIT_STATE = {
+    useremail: "",
+    password: "",
+}
 
-export default function reducer(state  ,action){
-    const {type,payload} = action;
+export default function reducer(state = INIT_STATE, action) {
+    const {type, payload} = action;
     switch(type){
-        case "Login":
-            return  ;
+        case AUTH_CONST.LOGIN_SUCCESS:
+            return {
+                ...state,
+                loginData: payload,
+              };
+        default:
+            return state
     }
 }

@@ -19,4 +19,5 @@ const CustomRoutes = () => {
   );
 }
 
+
 export default CustomRoutes;

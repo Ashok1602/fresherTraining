@@ -40,7 +40,7 @@
   background-color: white;
   height: 70vh;
   width: 50vw;
-  padding: 30px;
+  padding: 10px;
   margin: 20px;
 }
 .login-form {
@@ -102,5 +102,9 @@
 }
 .headtext {
   font-size: 20px;
+  font-weight: bold;
+}
+.textColor {
+  color: red;
   font-weight: bold;
 }
