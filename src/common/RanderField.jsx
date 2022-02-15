@@ -1,10 +1,10 @@
 import React from "react";
 import { Input } from 'reactstrap';
 
-const style = {
-  fontstyes:{fontWeight:"bold",
-     fontSize:"20px"}
-}
+// const style = {
+//   fontstyes:{fontWeight:"bold",
+//      fontSize:"20px"}
+// }
 
 const renderField = ({
     input,
@@ -12,7 +12,7 @@ const renderField = ({
     type,
     meta: { touched, error, warning } }) => (
     <div>
-      <label style = {style.fontstyes}>{label}</label>
+      <label style = {{fontWeight:"bold",fontSize:"20px"}}>{label}</label>
       <div>
         <Input {...input} placeholder={label} type={type} />
         

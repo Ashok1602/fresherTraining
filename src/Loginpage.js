@@ -5,6 +5,7 @@ import { Button,Form,FormGroup,Label,Col,Input, } from 'reactstrap';
 import { Field, reduxForm } from "redux-form";
 import renderField from  './common/RanderField';
 import {LoginUserSuccess} from './actions/LoginAction'
+import {UserSuccess} from './actions/userAction'
 import {useDispatch,useSelector } from 'react-redux';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
@@ -14,7 +15,7 @@ const email = value =>
     : undefined
 export const validPassword = value =>
 value && /^(0|[1-9][0-9]{10})$/i.test(value)
-  ? 'Invalid password, must be Numericals & 5 digits'
+  ? 'Invalid password'
   : undefined
 
   // email: info@villars-luxury.com 
@@ -27,18 +28,19 @@ const Loginpage = (props) => {
   const dispatch = useDispatch()  //the fundamental method of updating a Redux store's state 
                                 //use it to dispatch actions as needed.
   const navigate = useNavigate();
+
  const onSubmit = (formProps) => {
   //  console.log(formProps);
- 
- dispatch(LoginUserSuccess(formProps))    // directly goes to action/LoginAction.js
+  dispatch(LoginUserSuccess(formProps))    // directly goes to action/LoginAction.js 
  } 
 
  const loginData =  useSelector((state) => state.login.loginData)
- console.log(loginData)
+//  console.log(loginData)
  
- useEffect( () => {
+ useEffect(() => {
    if (loginData){
      if (loginData.isSuccess){
+       console.log(loginData)
      navigate(`/home`)
    }
  }},[loginData])

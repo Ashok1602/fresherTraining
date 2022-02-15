@@ -1,4 +1,4 @@
-import { AUTH_CONST } from "./actionTypes";
+import { AUTH_CONST,USER_LOGOUT} from "./actionTypes";
 import { AXIOS_INSTANCE, BASE_URL } from "./apiEndPoint";
 import { checkHttpStatus, parseJSON, handleLoginRedirect } from "../utils";
 import * as base from "./baseAction";
@@ -56,3 +56,16 @@ export function LoginUserSuccess(formData) {
   };
 }
 
+
+
+// export function LogOutUser() {
+//   return dispatch => {                                
+//           dispatch(
+//             base.getSuccess(USER_LOGOUT.USER_LOGOUT_SUCCESS, {   
+//               response: {
+//                 data: false
+//               }
+//             })
+//           );         
+//   };
+// }

@@ -1,4 +1,4 @@
-import { AUTH_CONST } from "../actions/actionTypes";
+import { AUTH_CONST,USER_LOGOUT } from "../actions/actionTypes";
 const INIT_STATE = {
     useremail: "",
     password: "",

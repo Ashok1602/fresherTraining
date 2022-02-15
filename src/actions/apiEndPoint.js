@@ -2,8 +2,6 @@ import axios from "axios";
 export const AXIOS_INSTANCE = axios.create();
 AXIOS_INSTANCE.defaults.headers.common["Content-Type"] = "application/json";
 AXIOS_INSTANCE.defaults.headers.common["Accept-Language"] = "en";
-
-
 // if (localStorage.getItem("authToken") !== null && localStorage.getItem("authToken") !== undefined) {
 //   const token = localStorage.getItem("authToken");
 //   AXIOS_INSTANCE.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -21,4 +19,4 @@ AXIOS_INSTANCE.defaults.headers.common["Accept-Language"] = "en";
 // };
 // base url
 export const BASE_URL = "http://guestiodevapi-env.eba-dqd2mp5w.us-east-1.elasticbeanstalk.com";
-
+export const USER_URL = "https://jsonplaceholder.typicode.com";

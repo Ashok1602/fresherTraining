@@ -69,6 +69,20 @@
   border-width: 0px;
   border-style: solid;
 }
+.button1 {
+  margin-left: 30px;
+  padding: 10px;
+  text-align: center;
+  background-color: #25e925;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  height: 45px;
+  width: 50%;
+  border-radius: 20px;
+  border-width: 0px;
+  border-style: solid;
+}
 .bg-container {
   background-image: url(https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg);
   height: 100vh;
