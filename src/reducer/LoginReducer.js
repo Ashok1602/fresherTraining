@@ -22,6 +22,12 @@ export default function reducer(state = INIT_STATE,action) {
           ...state,
           loginData: null,
         }
+        
+        case USER_LOGOUT.USER_LOGOUT_SUCCESS:
+          return {
+            ...state,
+            loginData: null,
+          }
         default:
             return state
     }

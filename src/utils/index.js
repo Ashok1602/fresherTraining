@@ -22,7 +22,7 @@ export function checkHttpStatus(response) {
 
 export function handleLoginRedirect(data) {
     localStorage.setItem("authToken", data.token);                 // assining data.Token as value to authToken  as key 
-    localStorage.setItem("userDetails", JSON.stringify(data.user));  // assining JSON string as value to userDetails  as key 
+    localStorage.suserDetailsetItem("", JSON.stringify(data.user));  // assining JSON string as value to userDetails  as key 
     return true;
 }
   

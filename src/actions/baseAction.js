@@ -3,7 +3,7 @@ import { checkHttpStatus } from "../utils";
 // when request is send and response is awaited
 export function getRequest(REQUEST) {
   return {
-    type: REQUEST,
+    type: REQUEST, 
   };
 }
 // if user is successfully logged in
@@ -13,7 +13,7 @@ export function getSuccess(SUCCESS, data) {
     payload: data,
   };
 }
-// handle state in case of failure of user login
+// handle state in ca  se of failure of user login
 export function getFailure(FAILURE, error) {
   handleError(error); 
   return {

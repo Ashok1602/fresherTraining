@@ -8,12 +8,12 @@ import {LoginUserSuccess} from './actions/LoginAction'
 import {UserSuccess} from './actions/userAction'
 import {useDispatch,useSelector } from 'react-redux';
 
-const required = value => (value || typeof value === 'number' ? undefined : 'Required')
+const required = value => (value || typeof(value) === 'number' ? undefined : 'Required')
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email address'
     : undefined
-export const validPassword = value =>
+const validPassword = value =>
 value && /^(0|[1-9][0-9]{10})$/i.test(value)
   ? 'Invalid password'
   : undefined
@@ -55,7 +55,7 @@ const Loginpage = (props) => {
           fullWidth
           component={renderField} 
           label= "Email"
-          validate={required}
+          validate={[email,required]}
           value={username}
           onChange = {(e) => setName(e.target.value)}
         />
@@ -90,58 +90,4 @@ const Loginpage = (props) => {
   );
 };
 
-
 export default reduxForm({form: "simple"})(Loginpage);
-
-
-// import React,{useEffect,useState} from 'react';
-// import './App.css';
-// import { Button,Form,FormGroup,Label,Col,Input, } from 'reactstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import {Link} from 'react-router-dom';
-// import Switch from 'react-switch'
-// import {reduxForm,Field} from 'redux-form';
-
-
-
-// const  Loginpage = () =>  {
-//     const [email, setData1] = useState()
-//     const [password, setData2] = useState()
-    
-//     const submitHandler = e => {
-//         e.preventDefault()
-//         console.log(email,password);
-//         if (email===undefined || password === undefined){
-//             alert("Please Enter Valid Details")
-//         }else if (password!=="12345"){
-//             alert("Invalid Password")
-//         }
-//     }
-
-//   return (
-//     <div className = "bg-container">
-//       <div className = "cardcontainer">
-//         <Form className="login-form" onSubmit = {submitHandler}> 
-//             <h1 className="loginText">LOGIN</h1>
-//             <FormGroup >
-//                 <Input type="email"  placeholder ="Enter email" value = {email} onChange={(e) => setData1(e.target.value)}/>
-//             </FormGroup>
-//             <FormGroup>
-//                 <Input type="password" placeholder ="Password" value = {password} onChange={(e) => setData2(e.target.value)}/>
-//             </FormGroup>
-//             <div className='rememberdiv'>
-//                 <div className = "remember-container">
-//                     <Input type="radio"  placeholder ="Enter email" />
-//                     <p className="rememText">REMEMBER ME</p>
-//                 </div>
-//                 <a href ="https://account.live.com/password/reset">FORGET PASSWORD?</a>
-//             </div>
-
-//             {password==="12345" && email !== undefined ? <Link to ="/home"><Button block type="submit" size="lg" color="success">SIGN IN</Button></Link> :<Button block type="submit" size="lg" color="success">SIGN IN</Button> } 
-//         </Form>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default (Loginpage);

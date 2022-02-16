@@ -40,7 +40,7 @@ export function LoginUserSuccess(formData) {
                 isSuccess: response.isSuccess
               }
             })
-          );
+          ) ;
         }
       })
       .catch(error => {                                 // if there is any error the catch block will handle those errors
@@ -58,14 +58,9 @@ export function LoginUserSuccess(formData) {
 
 
 
-// export function LogOutUser() {
-//   return dispatch => {                                
-//           dispatch(
-//             base.getSuccess(USER_LOGOUT.USER_LOGOUT_SUCCESS, {   
-//               response: {
-//                 data: false
-//               }
-//             })
-//           );         
-//   };
-// }
+export function LogOutUser() {
+  console.log("teja")
+  return dispatch => {        
+    dispatch(base.getRequest(USER_LOGOUT.USER_LOGOUT_SUCCESS));
+}
+}
