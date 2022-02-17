@@ -1,12 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {Link,useNavigate } from 'react-router-dom';
 import './App.css';
-import { Button,Form,FormGroup,Label,Col,Input, } from 'reactstrap';
+import { Form,Label,Col,Input, } from 'reactstrap';
 import { Field, reduxForm } from "redux-form";
 import renderField from  './common/RanderField';
 import {LoginUserSuccess} from './actions/LoginAction'
 import {UserSuccess} from './actions/userAction'
 import {useDispatch,useSelector } from 'react-redux';
+import {Button} from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {Checkbox} from '@material-ui/core/';
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+
 
 const required = value => (value || typeof(value) === 'number' ? undefined : 'Required')
 const email = value =>
@@ -21,6 +29,23 @@ value && /^(0|[1-9][0-9]{10})$/i.test(value)
   // email: info@villars-luxury.com 
   // password : reset@123
 const Loginpage = (props) => {
+  const GreenCheckbox = withStyles({
+    root: {
+      color: green[400],
+      '&$checked': {
+        color: green[600],
+      },
+    },
+    checked: {},
+   })((props) => <Checkbox color="default" {...props} />);
+    const [state, setState] = React.useState({
+      checkedB: true,
+    });
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+  
   const [username,setName] = useState("");
   const [password,setPassword] = useState("");
   const { handleSubmit, pristine, reset, submitting } = props;
@@ -70,19 +95,31 @@ const Loginpage = (props) => {
         />
       <div className='rememberdiv'>
           <div className = "remember-container">
-          <Input type="radio" />
-            <p className="rememText">REMEMBER ME</p>
+          <FormGroup row>
+          <FormControlLabel
+              control={
+              <Checkbox
+                checked={state.checkedB}
+                onChange={handleChange}
+                name="checkedB"
+                color="primary"
+              />
+              }
+            label="Remembar"
+          />
+           </FormGroup>
           </div>
-          <a href ="https://account.live.com/password/reset">FORGET PASSWORD?</a>
+          <a className = "linktext" href ="https://account.live.com/password/reset">FORGET PASSWORD?</a>
       </div>
       <div className="rememberdiv">
         
-      <Button blocktype="button" size="lg" color="success" type="submit" disabled={pristine || submitting}>
+      <Button   variant="contained" color="primary" type="submit" >
           Submit
         </Button>
-        < Button blocktype="button" size="lg" disabled={pristine || submitting} onClick={reset}>
+        < Button  variant="contained" color="secondary"  onClick={reset}>
           Clear Values
         </Button>
+        
       </div>
     </form>
   </div>

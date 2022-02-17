@@ -5,8 +5,9 @@ import {UserSuccess} from './actions/userAction';
 import {LogOutUser} from './actions/LoginAction';
 import {useDispatch,useSelector } from 'react-redux';
 import {Table} from 'reactstrap';
-import {ModalFooter,Button,ModalHeader,Modal,ModalBody,noRefCheck} from 'reactstrap';
+import {ModalFooter,ModalHeader,Modal,ModalBody,noRefCheck} from 'reactstrap';
 import UserModal from './modals/UserModal';
+import {Button} from "@material-ui/core";
 
 const Home = () => {
   let navigate2 = useNavigate();
@@ -64,10 +65,7 @@ const [userData,setItem]= useState();
                   </tbody>
                 </Table>
           <center>
-              <Link  to = "/">
-                <Button onClick ={() => handleActions()} 
-                shadow size ="lg" color="secondary">Logout</Button>
-                </Link>
+                <Button  variant="contained" color="secondary"  onClick ={() => handleActions()}>Logout</Button>
           </center>
        </div>
             

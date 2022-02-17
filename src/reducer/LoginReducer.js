@@ -4,7 +4,7 @@ const INIT_STATE = {
     password: "",
 }
 
-export default function reducer(state = INIT_STATE,action) {
+export default function UserReducer(state = INIT_STATE,action) {
     const {type, payload} = action;
     switch (type) {
       case AUTH_CONST.LOGIN_REQUEST:
