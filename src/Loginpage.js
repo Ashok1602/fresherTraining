@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {Link,useNavigate } from 'react-router-dom';
 import './App.css';
-import { Form,Label,Col,Input, } from 'reactstrap';
+import { Form,Label,Col,Input } from 'reactstrap';
 import { Field, reduxForm } from "redux-form";
-import renderField from  './common/RanderField';
+import {RenderField} from  './common/RanderField';
 import {LoginUserSuccess} from './actions/LoginAction'
 import {UserSuccess} from './actions/userAction'
 import {useDispatch,useSelector } from 'react-redux';
@@ -14,7 +14,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {Checkbox} from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
-
+// import Box from "@mui/material/Box";
+// import IconButton from "@mui/material/IconButton";
+// import Input from "@mui/material/Input";
+// import FilledInput from "@mui/material/FilledInput";
+// import OutlinedInput from "@mui/material/OutlinedInput";
+// import InputLabel from "@mui/material/InputLabel";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import FormControl from "@mui/material/FormControl";
+// import TextField from "@mui/material/TextField";
+// import Visibility from "@mui/icons-material/Visibility";
+// import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const required = value => (value || typeof(value) === 'number' ? undefined : 'Required')
 const email = value =>
@@ -55,8 +65,8 @@ const Loginpage = (props) => {
   const navigate = useNavigate();
 
  const onSubmit = (formProps) => {
-  //  console.log(formProps);
   dispatch(LoginUserSuccess(formProps))    // directly goes to action/LoginAction.js 
+  
  } 
 
  const loginData =  useSelector((state) => state.login.loginData)
@@ -70,6 +80,25 @@ const Loginpage = (props) => {
    }
  }},[loginData])
 
+//  const [values, setValues] = React.useState({
+//   showPassword: false
+// });
+
+// const handleChange2 = (prop) => (event) => {
+//   setValues({ ...values, [prop]: event.target.value });
+// };
+
+// const handleClickShowPassword = () => {
+//   setValues({
+//     ...values,
+//     showPassword: !values.showPassword
+//   });
+// };
+
+// const handleMouseDownPassword = (event) => {
+//   event.preventDefault();
+// };
+
 
  return (
  <div className = "bg-container">
@@ -78,15 +107,39 @@ const Loginpage = (props) => {
       <h1 className="loginText text-center">LOGIN</h1>
         <Field name="email" type="email"
           fullWidth
-          component={renderField} 
+          component={RenderField} 
           label= "Email"
           validate={[email,required]}
           value={username}
           onChange = {(e) => setName(e.target.value)}
         />
         
+        {/* <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange2("password")}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl> */}
         <Field name="password" type="password"
-          component={renderField}
+          component={RenderField}
           fullWidth
           label= "Password"
           value={password}

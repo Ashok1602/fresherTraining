@@ -9,32 +9,53 @@ import {ModalFooter,ModalHeader,Modal,ModalBody,noRefCheck} from 'reactstrap';
 import UserModal from './modals/UserModal';
 import {Button} from "@material-ui/core";
 
+
+
+
+
 const Home = () => {
   let navigate2 = useNavigate();
   const dispatch = useDispatch()
+  const userData1 =  useSelector((state) => state.user.userData)
+  const [addRowData,setAddRowData]= useState();
 
+  console.log(addRowData,"addRowData")
+  console.log(userData1,"userData1")
+
+  useEffect(() => {
+    setAddRowData(userData1)
+  },[userData1])
+ 
   useEffect(() => {
     dispatch(UserSuccess())
   },[])
 
-  const userData1 =  useSelector((state) => state.user.userData)
-  console.log(userData1)
+
 
 const [isOpenModal,setModal]= useState(false);
-const [userData,setItem]= useState();
+const [userData,setItem]= useState([]);
+const [userAdd,setAdd]= useState(false);
 
  const handleOnClick = (item) => {
    if (item){
      setItem(item)
+     setAdd(false)
   }
   setModal(!isOpenModal)
-
  }
+ 
+ const handleOnClickAddUser = (addUser) => {
+   if (addUser){
+    setAdd(addUser)
+   }
+ setModal(!isOpenModal)
+}
+
   let userInfo1 = (<></>)          // called as react scopes
-  if (userData1){
-      userInfo1 = userData1.map(item => {  
+  if (addRowData){
+      userInfo1 = addRowData.map((item,index) => {  
       return (
-          <tr key ={item.id} onClick={() => {handleOnClick(item)}}>
+          <tr key ={index} onClick={() => {handleOnClick(item)}}>
               <td>{item.name}</td>
               <td>{item.phone}</td>
               <td>{item.email}</td>
@@ -47,12 +68,17 @@ const [userData,setItem]= useState();
     dispatch(LogOutUser());
     navigate2('/');
   }
+  
   return ( 
         <div> 
-                {isOpenModal && <UserModal isOpenModal = {isOpenModal} switchToModal = {handleOnClick} 
-                userData ={userData} 
-                initialValues={{Username: userData.name,PhoneNumber:userData.phone,Email:userData.email}}/>}
-                <Table hover>
+          <div className = "rightBitton">
+           <Button onClick={() => {handleOnClickAddUser(true)}} size="large" variant="contained" color="secondary">Add User</Button>
+           </div>
+
+              {isOpenModal ? <UserModal isOpenModal = {isOpenModal} switchToModal = {handleOnClick} 
+              userData ={userData} userAdd ={userAdd} setAddRowData = {setAddRowData} addRowData = {addRowData}
+              initialValues={{name: userData.name,phone:userData.phone,email:userData.email}}/> : null}
+              <Table hover>
                   <thead>
                       <tr>
                           <th>Name</th>

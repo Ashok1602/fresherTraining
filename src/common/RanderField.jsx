@@ -1,12 +1,13 @@
 import React from "react";
 import { Input } from 'reactstrap';
+// import {TextField} from 'material-ui/lab'
 
 // const style = {
 //   fontstyes:{fontWeight:"bold",
 //      fontSize:"20px"}
 // }
 
-const renderField = ({
+export const RenderField = ({
     input,
     label,
     type,
@@ -23,5 +24,13 @@ const renderField = ({
       </div>
     </div>
   )
-export default renderField
+  // export const RenderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+  //   <TextField hintText={label}
+  //     floatingLabelText={label}
+  //     errorText={touched && error}
+  //     {...input}
+  //     {...custom}
+  //   />
+  // )
+// export default renderField
   

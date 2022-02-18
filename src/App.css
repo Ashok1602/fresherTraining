@@ -1,7 +1,9 @@
 .App {
   text-align: start;
 }
-
+body {
+  margin: 0px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -129,4 +131,8 @@
 .linktext {
   padding: 10px;
   color: darkblue;
+}
+.rightBitton {
+  text-align: right;
+  padding-right: 70px;
 }
