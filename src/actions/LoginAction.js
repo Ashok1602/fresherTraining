@@ -59,7 +59,7 @@ export function LoginUserSuccess(formData) {
 
 
 export function LogOutUser() {
-  console.log("teja")
+  // console.log("teja")
   return dispatch => {        
     dispatch(base.getRequest(USER_LOGOUT.USER_LOGOUT_SUCCESS));
 }

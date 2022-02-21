@@ -4,7 +4,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Loginpage from './Loginpage';
-import Home from './Home';
+import {Home} from './Home';
 
 const CustomRoutes = () => {
   return (

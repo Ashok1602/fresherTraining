@@ -70,6 +70,7 @@ const UserModal = (props) => {
                       </ModalFooter>
                       </form>
               </Modal>
+          
     </div>
   )
 }
