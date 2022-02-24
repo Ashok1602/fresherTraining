@@ -16,7 +16,7 @@ const rootEl = document.getElementById("root");
 
 ReactDOM.render(
   <Provider store={store}>
-    <div style={{ padding: 15 }}>
+    <div style={{ padding: 0 }}>
       <App />
     </div>
   </Provider>,

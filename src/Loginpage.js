@@ -14,17 +14,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {Checkbox} from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
-// import Box from "@mui/material/Box";
-// import IconButton from "@mui/material/IconButton";
-// import Input from "@mui/material/Input";
-// import FilledInput from "@mui/material/FilledInput";
-// import OutlinedInput from "@mui/material/OutlinedInput";
-// import InputLabel from "@mui/material/InputLabel";
-// import InputAdornment from "@mui/material/InputAdornment";
-// import FormControl from "@mui/material/FormControl";
-// import TextField from "@mui/material/TextField";
-// import Visibility from "@mui/icons-material/Visibility";
-// import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const required = value => (value || typeof(value) === 'number' ? undefined : 'Required')
 const email = value =>

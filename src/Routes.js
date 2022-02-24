@@ -5,6 +5,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Loginpage from './Loginpage';
 import {Home} from './Home';
+import {NewDesign} from './NewDesign';
 
 const CustomRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const CustomRoutes = () => {
             <Routes>
               <Route path ="/"  element = {<Loginpage />} />
               <Route path ="/home" element ={<Home />}/>
+              <Route path ="/newDesign" element ={<NewDesign />}/>
             </Routes>
       </div>
     </BrowserRouter>

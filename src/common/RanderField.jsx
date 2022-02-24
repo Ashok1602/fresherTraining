@@ -13,7 +13,7 @@ export const RenderField = ({
     type,
     meta: { touched, error, warning } }) => (
     <div>
-      <label style = {{fontWeight:"bold",fontSize:"20px"}}>{label}</label>
+      <label style = {{fontWeight:"bold",fontSize:"20px",textAlign:"left"}}>{label}</label>
       <div>
         <Input {...input} placeholder={label} type={type} />
         

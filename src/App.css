@@ -1,8 +1,5 @@
 .App {
-  text-align: start;
-}
-body {
-  margin: 0px;
+  text-align: center;
 }
 .App-logo {
   height: 40vmin;
@@ -38,6 +35,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 .cardcontainer {
   background-color: white;
   height: 70vh;
@@ -132,7 +130,69 @@ body {
   padding: 10px;
   color: darkblue;
 }
-.rightBitton {
+.rightButton {
   text-align: right;
   padding-right: 70px;
+}
+.cardContainer {
+  border-style: solid;
+  border-top-style: dotted;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+@media (min-width: 768px) {
+  .inputSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.cardImage {
+  height: 150px;
+  width: 150px;
+  border-radius: 80px;
+}
+.cardImageContainer {
+  height: 600px;
+  width: 500px;
+}
+
+@media (max-width: 768px) {
+  .cardImageContainer {
+    height: 400px;
+    width: 350px;
+  }
+}
+@media (width: 540px) {
+  .cardImageContainer {
+    height: 500px;
+    width: 450px;
+  }
+}
+.cardtitle {
+  font-size: 25px;
+}
+.cardtext {
+  font-size: 17px;
+}
+@media (min-width: 768px) {
+  .cardtitle {
+    font-size: 50px;
+  }
+  .cardtext {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .navbarText {
+    text-align: left;
+    color: red;
+  }
+  .buttonSearch {
+    margin-top: 10px;
+  }
 }

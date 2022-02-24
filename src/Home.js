@@ -10,30 +10,31 @@ import UserModal from './modals/UserModal';
 import {Button} from "@material-ui/core";
 import styled from "styled-components";
 import { useTable } from "react-table";
-
+import BTable from 'react-bootstrap/Table';
 
 
 
 export const Home = () => {
+  
   const Styles = styled.div`
   padding: 1rem;
-  margin-left:320px;
-  margin-right:320px;
+  margin-left:300px;
+  margin-right:300px;
   table {
     border-spacing: 2;
-    border: 2px solid black;
+    border: 1px solid black;
 
     tr {
       :last-child {
         td {
-          border-bottom: 2;
+          border-bottom: 1;
         }
       }
     }
 
     th {
       text-align:center;
-      border: 2px solid black;
+      border: 1px solid black;
       border-spacing: 2;
       padding: 0.65rem;
     },
@@ -44,23 +45,12 @@ export const Home = () => {
       border-right: 1px solid black;
 
       :last-child {
-        border-right: 2;
+        border-right: 1;
       }
     }
   }
 `;
 
-const [isOpenModal,setModal]= useState(false);
-const [userData,setItem]= useState([]);
-const [userAdd,setAdd]= useState(false);
-
- const handleOnClick = (item) => {
-   if (item){
-     setItem(item)
-     setAdd(false)
-  }
-  setModal(!isOpenModal)
- }
   let navigate2 = useNavigate();
   const dispatch = useDispatch()
   const userData1 =  useSelector((state) => state.user.userData)
@@ -73,16 +63,40 @@ const [userAdd,setAdd]= useState(false);
   useEffect(() => {
     dispatch(UserSuccess())
   },[])
+  
+  const [isOpenModal,setModal]= useState(false);
+  const [userData,setItem]= useState([]);
+  const [userAdd,setAdd]= useState(false);
 
 
+  // const handleOnClickAddUser = (addUser) => {
+  //    if (addUser){
+  //     setAdd(addUser)
+  //    }
+  //  setModal(!isOpenModal)
+  // } 
 
 
- const handleOnClickAddUser = (addUser) => {
-   if (addUser){
-    setAdd(addUser)
-   }
- setModal(!isOpenModal)
-}
+  const handleOnClick = (row,info) => {
+    if (info === "userdata"){
+      if (row){
+        setItem(row.values)
+        setAdd(false)
+      }
+      setModal(!isOpenModal)
+    }else if(info==="useradd"){
+      if (row){
+        setAdd(row)
+        setItem("")
+       }
+     setModal(!isOpenModal)
+    }else{
+      setModal(!isOpenModal)
+    }
+    
+  }
+
+
 // const deleteActions = (index) => {
 //   addRowData.splice(index,1);
 //   // handleOnClick();
@@ -119,11 +133,11 @@ const [userAdd,setAdd]= useState(false);
 
 function Table({ columns, data }) {
   const {getTableProps,getTableBodyProps,headerGroups,rows,prepareRow} = useTable({columns,data});
-
-  // Render the UI for your table
+  
+  // Render the UI for  table
   return (
-    <table {...getTableProps()}>
-
+    <BTable striped bordered hover size="sm" {...getTableProps()}>
+    {/* <table {...getTableProps()}> */}
       <thead>
         {headerGroups.map((headerGroup) => (
 
@@ -135,26 +149,23 @@ function Table({ columns, data }) {
 
         ))}
       </thead>
-
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-                
-            <tr {...row.getRowProps()} onClick = {() => handleOnClick()}>
+            <tr {...row.getRowProps()} onClick = {() => handleOnClick(row,"userdata")}>
               {row.cells.map((cell) => {
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })} 
             </tr>
-
           );
         })}
       </tbody>
 
-    </table>
+    {/* </table> */}
+    </BTable>
   );
 } 
-
 
 
   const handleActions = () => {
@@ -165,9 +176,12 @@ function Table({ columns, data }) {
 
   return ( 
         <div> 
-          <div className = "rightBitton">
-           <Button onClick={() => {handleOnClickAddUser(true)}} size="large" variant="contained" color="secondary">Add User</Button>
-           </div>
+          <div className = "rightButton p-4">
+           <Button onClick={() => {handleOnClick(true,"useradd")}} size="large" variant="contained" color="secondary">Add User</Button>
+           <Link to = "/newDesign">
+             <Button onClick ={() => navigate2(`/newDesign}`)} style={{marginLeft:"10px"}} size="large" variant="contained" color="primary">New Design</Button>
+           </Link>
+          </div>
 
               {isOpenModal ? <UserModal isOpenModal = {isOpenModal} switchToModal = {handleOnClick} 
               userData ={userData} userAdd ={userAdd} setAddRowData = {setAddRowData} addRowData = {addRowData}
